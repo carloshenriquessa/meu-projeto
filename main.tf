@@ -24,7 +24,7 @@ resource "docker_image" "nginx" {
 
 resource "docker_container" "web" {
 
-     name  = "meu-container-web"
+  name = "meu-container-web"
 
   image = docker_image.nginx.image_id
 
@@ -38,11 +38,11 @@ resource "docker_container" "web" {
 
   volumes {
 
-    host_path      = "${path.cwd}/site"
+    host_path = "${path.cwd}/site"
 
     container_path = "/usr/share/nginx/html"
 
-    read_only      = true
+    read_only = true
 
   }
 
@@ -62,7 +62,7 @@ resource "docker_image" "postgres" {
 
 resource "docker_container" "db" {
 
-  name  = "meu-container-db"
+  name = "meu-container-db"
 
   image = docker_image.postgres.image_id
 
@@ -82,7 +82,7 @@ resource "docker_container" "db" {
 
   volumes {
 
-    volume_name    = docker_volume.db_data.name
+    volume_name = docker_volume.db_data.name
 
     container_path = "/var/lib/postgresql/data"
 
